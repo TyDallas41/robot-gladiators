@@ -7,7 +7,19 @@ var playerMoney = 10;
 
 console.log( playerName, playerAttack, playerHealth);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
+var enemyHealth = 50;
+var enemyAttack = 12;
+
+fight();
+
+console.log(enemyNames.length);
+
+for(var i = 0; i < enemyNames.length; i++){
+    console.log(enemyNames[i]);
+    console.log(i);
+    console.log(enemyNames[i] + " is at " + i +" index");
+}
 var enemyHealth = 50;
 var enemyAttack = 12;
 
@@ -47,10 +59,22 @@ var fight = function(){
 
         //if player chooses to skip
     } else if (promptFight === "skip" || promptFight === "SKIP"){
-        window.alert(playerName + " has chosen to skip the fight!");
-    } else {
-        window.alert("You need to choose a valid option. Try again!");
+
+        //confirm player 
+        var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+
+        //if yes leave fight
+        if(confirmSkip){
+            
+            window.alert(playerName + " has chosen to skip the fight!");
+            playerMoney = playerMoney - 2;
+        } 
+        else {
+            fight();
     }
 }
 
-fight();
+//fight();
+for(var i = 0; i < enemyNames.length; i++){
+    fight(enemyNames[i]);
+}
